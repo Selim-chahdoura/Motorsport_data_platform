@@ -1,0 +1,54 @@
+Table lap_fact {
+  lap_id bigint [primary key]
+  driver_id bigint [ref: > driver.driver_id]
+  constructor_id bigint [ref: > constructor.constructor_id]
+  lap_time_seconds double
+  is_valid_pace_lap boolean
+  circuit_id bigint [ref: > circuit.circuit_id]
+  session_id bigint [ref: > session.session_id]
+  tyre_id bigint [ref: > tyres.tyre_id]
+  tyre_age integer
+  lap_number integer
+  pit_in_time_seconds  double
+  pit_out_time_seconds  double
+  lap_start_time_seconds  double
+  track_temperature double
+  air_temperature double
+  humidity double
+}
+
+Table driver {
+  driver_id bigint [pk]
+  first_name varchar
+  last_name varchar
+  date_of_birth date
+  nationality varchar
+}
+
+Table constructor {
+  constructor_id bigint [pk]
+  constructor_name varchar
+  nationality varchar
+}
+
+Table tyres {
+  tyre_id bigint [pk]
+  compound  varchar
+}
+
+Table session {
+    session_id bigint [pk]
+    season integer
+    event_round integer
+    event_name varchar
+    session_type varchar
+    session_date date
+}
+
+Table circuit {
+  circuit_id bigint [primary key]
+  circuit_name varchar
+  country varchar
+  track_type varchar
+  track_length_km double
+}
