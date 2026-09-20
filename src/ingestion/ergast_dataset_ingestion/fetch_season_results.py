@@ -31,6 +31,7 @@ def fetch_seasons_result():
 
     for season in seasons:
         races = fetch_one_season_results(season)
+        
 
         with open(f"data_lake/raw/results/results_{season}.json", "w", encoding="utf-8") as f:
             json.dump({"Races": races}, f, indent=2)
