@@ -1,46 +1,32 @@
-
+# Python
 __pycache__/
 *.py[cod]
-*$py.class
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Virtual environment
 .venv/
-venv/
-env/
 
-.ipynb_checkpoints/
-
-data_lake/
+# FastF1 cache
 cache/
-fastf1_http_cache.sqlite
-mlruns/
 
-mlflow.db
-notebooks/mlartifacts/
-notebooks/mlflow.db
+# Local datasets
+data/
+*.parquet
 
-models/*.pkl
-models/*.joblib
-*.pkl
-*.joblib
+# Azure credentials and environment variables
+.env
+.env.*
+!.env.example
 
-spark-warehouse/
-*.crc
-_SUCCESS
-.part-*.crc
-
-
+# Databricks Asset Bundles
+.databricks/
 .bundle/
 
-.databricks/
-
-
+# IDE
 .vscode/
 .idea/
 
-
-.env
-
-.DS_Store
-Thumbs.db
-
+# Logs
 *.log
-structure.txt

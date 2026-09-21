@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "motorsport-data-platform"
+version = "0.1.0"
+description = "Formula 1 Data Engineering Platform using Azure and Databricks"
+requires-python = ">=3.10,<3.13"
+
+dependencies = [
+    "fastf1",
+    "pandas",
+    "pyarrow",
+    "azure-identity",
+    "azure-storage-blob",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "ruff",
+]
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["ingestion", "ingestion.*"]
+namespaces = false
