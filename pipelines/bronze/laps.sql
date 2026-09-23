@@ -1,4 +1,9 @@
 CREATE OR REFRESH STREAMING TABLE motorsport_dev.bronze.laps_raw
+
+TBLPROPERTIES (
+    'delta.feature.timestampNtz' = 'supported'
+)
+
 AS
 SELECT
     *,
