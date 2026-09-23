@@ -47,4 +47,4 @@ def upload_session_data(year: int, event: str, session_type: str) -> None:
 
 
 if __name__ == "__main__":
-    upload_session_data(2025, "Monza", "R")
+    upload_session_data(2025, "Monaco", "R")

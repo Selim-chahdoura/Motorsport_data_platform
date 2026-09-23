@@ -18,7 +18,7 @@ def serialize_to_parquet(df: pd.DataFrame) -> bytes:
 
     buffer = BytesIO()
 
-    df.to_parquet(buffer, engine="pyarrow", index=False)
+    df.to_parquet(buffer, engine="pyarrow", index=False, coerce_timestamps="us")
 
     return buffer.getvalue()
 
@@ -35,8 +35,6 @@ def upload_dataset(blob_service: BlobServiceClient, dataframe: pd.DataFrame, bas
 
     Returns True if uploaded, False if skipped.
     """
-
-
     parquet_bytes = serialize_to_parquet(dataframe)
 
     content_hash = calculate_hash(parquet_bytes)
@@ -68,7 +66,5 @@ def upload_dataset(blob_service: BlobServiceClient, dataframe: pd.DataFrame, bas
         return True
 
     except ResourceExistsError:
-        # Another execution may have uploaded the same file
-        # between our existence check and upload.
         print(f"SKIPPED (already uploaded): {blob_path}")
         return False
